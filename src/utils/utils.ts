@@ -1,5 +1,15 @@
 import images from '@/data/image';
 
+export function isValidEmail(email: string): boolean {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
+
+export function isValidName(name: string): boolean {
+  const regex = /^[a-zA-Z ]*$/;
+  return regex.test(name);
+}
+
 export function calculateProgressBarWidth(
   currentValue: number,
   maxValue: number,
