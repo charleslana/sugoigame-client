@@ -1,12 +1,5 @@
-import AvatarView from '@/views/AvatarView.vue';
 import HomeView from '@/views/HomeView.vue';
-import NewspaperAllView from '@/views/NewspaperAllView.vue';
-import NewspaperDetailsView from '@/views/NewspaperDetailsView.vue';
-import NewspaperView from '@/views/NewspaperView.vue';
-import NicknamesView from '@/views/NicknamesView.vue';
 import RegisterView from '@/views/RegisterView.vue';
-import SelectCharacterView from '@/views/SelectCharacterView.vue';
-import VipBenefitsView from '@/views/VipBenefitsView.vue';
 import { createRouter, createWebHistory } from 'vue-router';
 
 const router = createRouter({
@@ -23,48 +16,6 @@ const router = createRouter({
       name: 'register',
       component: RegisterView,
       meta: { title: getTitle('Cadastre-se') }
-    },
-    {
-      path: '/select-character',
-      name: 'select-character',
-      component: SelectCharacterView,
-      meta: { title: getTitle('Criar/Selecionar personagem') }
-    },
-    {
-      path: '/newspaper',
-      name: 'newspaper',
-      component: NewspaperView,
-      meta: { title: getTitle('Jornal') }
-    },
-    {
-      path: '/newspaper-all',
-      name: 'newspaper-all',
-      component: NewspaperAllView,
-      meta: { title: getTitle('Todos os jornais') }
-    },
-    {
-      path: '/newspaper/:id',
-      name: 'newspaper-details',
-      component: NewspaperDetailsView,
-      meta: { title: getTitle('Detalhes do jornal') }
-    },
-    {
-      path: '/avatar',
-      name: 'avatar',
-      component: AvatarView,
-      meta: { title: getTitle('Avatares') }
-    },
-    {
-      path: '/vip-benefits',
-      name: 'vip-benefits',
-      component: VipBenefitsView,
-      meta: { title: getTitle('Vantagens VIP') }
-    },
-    {
-      path: '/nicknames',
-      name: 'nicknames',
-      component: NicknamesView,
-      meta: { title: getTitle('Alcunhas') }
     },
     {
       path: '/:catchAll(.*)',

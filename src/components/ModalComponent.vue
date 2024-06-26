@@ -1,6 +1,7 @@
 <script setup lang="ts">
 defineProps<{
   message: string;
+  isError?: boolean;
 }>();
 
 const emit = defineEmits(['close']);
@@ -14,12 +15,23 @@ function closeModal(): void {
   <div class="modal is-active">
     <div class="modal-background"></div>
     <div class="modal-card animate__animated animate__slideInDown">
-      <header class="modal-card-head">
+      <header class="modal-card-head" v-if="isError">
         <p class="modal-card-title">Bancando o espertinho?</p>
         <button class="delete" aria-label="close" @click="closeModal"></button>
       </header>
       <section class="modal-card-body">
-        <img src="../assets/images/layout/error.jpg" alt="Modal image" />
+        <img src="../assets/images/layout/error.jpg" alt="Modal image" v-if="isError" />
+        <button
+          type="button"
+          class="close-modal"
+          data-dismiss="modal"
+          aria-hidden="true"
+          style="margin-top: -10px"
+          @click="closeModal"
+          v-else
+        >
+          ×
+        </button>
         <p class="has-text-centered mt-1">{{ message }}</p>
       </section>
       <footer class="modal-card-foot is-justify-content-end">
@@ -69,5 +81,17 @@ function closeModal(): void {
 .modal-card-foot {
   background: transparent;
   border-top: 1px solid #c07617;
+}
+
+.close-modal {
+  color: white;
+  font-size: 25px;
+  font-weight: bold;
+  float: right;
+  opacity: 0.7;
+}
+
+.close-modal:hover {
+  opacity: 1;
 }
 </style>
