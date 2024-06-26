@@ -1,3 +1,4 @@
+import GameRulesView from '@/views/GameRulesView.vue';
 import HomeView from '@/views/HomeView.vue';
 import RegisterView from '@/views/RegisterView.vue';
 import { createRouter, createWebHistory } from 'vue-router';
@@ -16,6 +17,12 @@ const router = createRouter({
       name: 'register',
       component: RegisterView,
       meta: { title: getTitle('Cadastre-se') }
+    },
+    {
+      path: '/game-rules',
+      name: 'game-rules',
+      component: GameRulesView,
+      meta: { title: getTitle('Regras e Punições') }
     },
     {
       path: '/:catchAll(.*)',
