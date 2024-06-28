@@ -9,6 +9,7 @@ import {
   faHome,
   faList,
   faLock,
+  faQuestion,
   faUserPlus
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
@@ -20,7 +21,7 @@ import 'animate.css';
 import 'floating-vue/dist/style.css';
 import 'vue-search-select/dist/VueSearchSelect.css';
 
-library.add(faEnvelope, faLock, faHome, faUserPlus, faBan, faList, faCircleQuestion);
+library.add(faEnvelope, faLock, faHome, faUserPlus, faBan, faList, faCircleQuestion, faQuestion);
 
 const app = createApp(App);
 

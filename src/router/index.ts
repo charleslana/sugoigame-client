@@ -1,5 +1,7 @@
+import FrequentlyAskedQuestionView from '@/views/FrequentlyAskedQuestionView.vue';
 import GameRulesView from '@/views/GameRulesView.vue';
 import HomeView from '@/views/HomeView.vue';
+import PrivacyPolicyView from '@/views/PrivacyPolicyView.vue';
 import RegisterView from '@/views/RegisterView.vue';
 import { createRouter, createWebHistory } from 'vue-router';
 
@@ -23,6 +25,18 @@ const router = createRouter({
       name: 'game-rules',
       component: GameRulesView,
       meta: { title: getTitle('Regras e Punições') }
+    },
+    {
+      path: '/privacy-policy',
+      name: 'privacy-policy',
+      component: PrivacyPolicyView,
+      meta: { title: getTitle('Política de privacidade') }
+    },
+    {
+      path: '/frequently-asked-question',
+      name: 'frequently-asked-question',
+      component: FrequentlyAskedQuestionView,
+      meta: { title: getTitle('FAQ') }
     },
     {
       path: '/:catchAll(.*)',

@@ -107,8 +107,10 @@ function checkRouteParams(): void {
         </div>
         <div class="navbar-menu">
           <div class="navbar-start">
-            <a class="navbar-item">Política de Privacidade</a>
-            <a class="navbar-item">Regras e Punições</a>
+            <RouterLink to="/privacy-policy" class="navbar-item"
+              >Política de Privacidade</RouterLink
+            >
+            <RouterLink to="/game-rules" class="navbar-item">Regras e Punições</RouterLink>
           </div>
         </div>
       </nav>
@@ -154,7 +156,7 @@ function checkRouteParams(): void {
               </p>
             </div>
             <div class="field is-pulled-right">
-              <RouterLink to="/register">Esqueci minha senha?</RouterLink>
+              <RouterLink to="/recovery-password">Esqueci minha senha?</RouterLink>
             </div>
             <div class="field">
               <p class="control">

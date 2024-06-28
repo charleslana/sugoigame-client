@@ -5,6 +5,8 @@ import { computed, ref } from 'vue';
 
 defineProps<{
   title?: string;
+  icon?: string;
+  hint?: string;
 }>();
 
 const isOpenMenu = ref(false);
@@ -116,7 +118,9 @@ function toggleFloatSupport(): void {
     <div class="content">
       <div class="container">
         <div class="wrapper">
-          <div class="wrapper-header" v-if="title">{{ title }}</div>
+          <div class="wrapper-header" v-if="title">
+            {{ title }} <font-awesome-icon :icon="['fas', icon]" v-if="icon" v-tooltip="hint" />
+          </div>
           <div class="wrapper-body">
             <slot name="wrapper"></slot>
           </div>
@@ -124,9 +128,9 @@ function toggleFloatSupport(): void {
       </div>
     </div>
     <div
-      class="float-footer animate__animated"
+      class="float-footer"
       :class="{
-        animate__slideInUp: isOpenFloatMain,
+        'custom-slide-in': isOpenFloatMain,
         'is-hidden': !isOpenFloatMain
       }"
     >
@@ -157,9 +161,9 @@ function toggleFloatSupport(): void {
       </div>
     </div>
     <div
-      class="float-footer animate__animated"
+      class="float-footer"
       :class="{
-        animate__slideInUp: isOpenFloatSupport,
+        'custom-slide-in': isOpenFloatSupport,
         'is-hidden': !isOpenFloatSupport
       }"
     >
@@ -221,10 +225,11 @@ function toggleFloatSupport(): void {
 
 .bg-footer .menu {
   color: #030303;
-  font-size: 7px;
+  font-size: 0.7rem;
   font-weight: bold;
   text-transform: uppercase;
   text-align: center;
+  text-shadow: 0px 1px 1px #fff;
 }
 
 .bg-footer img {
@@ -243,8 +248,13 @@ function toggleFloatSupport(): void {
   margin: auto;
   border-radius: 5px;
   border: 3px solid #c07617;
-  margin-bottom: 2vh;
   animation-duration: 0.5s;
+  position: fixed;
+  bottom: 112px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation-name: custom-slide-in;
+  z-index: 2;
 }
 
 .float-footer a {
@@ -264,5 +274,16 @@ function toggleFloatSupport(): void {
   height: 75vh;
   overflow: auto;
   margin-top: 24px;
+}
+
+@keyframes custom-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(50px) translateX(-50%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) translateX(-50%);
+  }
 }
 </style>
