@@ -189,24 +189,45 @@ function checkRouteParams(): void {
   overflow: hidden;
 }
 
-.bg-item {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+.bg .bg-item {
+  background-size: cover;
+  background-position: center center;
   height: 100%;
+  left: 0;
   opacity: 0;
   transition: opacity 1s ease-in-out;
-  z-index: 0;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  animation: slideBackground 40s linear infinite;
+  position: absolute;
+  top: 0;
+  visibility: hidden;
+  width: 150%;
 }
 
-.bg-item.is-active {
+.bg .bg-item.is-active {
   opacity: 1;
+  visibility: visible;
   z-index: 1;
+  animation: bg 45s linear infinite;
+}
+
+@media screen and (max-width: 1280px) {
+  .bg .bg-item {
+    animation: bg 29.25s linear infinite;
+  }
+}
+
+@media screen and (max-width: 736px) {
+  .bg .bg-item {
+    animation: bg 18s linear infinite;
+  }
+}
+
+@keyframes bg {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-25%);
+  }
 }
 
 .overlay {
@@ -248,15 +269,6 @@ function checkRouteParams(): void {
 
 .bg-08 {
   background-image: url(../assets/images/home/bg-08.jpg);
-}
-
-@keyframes slideBackground {
-  0% {
-    background-position: 0% 0%;
-  }
-  100% {
-    background-position: 100% 0%;
-  }
 }
 
 .content {
