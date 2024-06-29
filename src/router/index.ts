@@ -2,6 +2,7 @@ import FrequentlyAskedQuestionView from '@/views/FrequentlyAskedQuestionView.vue
 import GameRulesView from '@/views/GameRulesView.vue';
 import HomeView from '@/views/HomeView.vue';
 import PrivacyPolicyView from '@/views/PrivacyPolicyView.vue';
+import RecoveryPasswordView from '@/views/RecoveryPasswordView.vue';
 import RegisterView from '@/views/RegisterView.vue';
 import { createRouter, createWebHistory } from 'vue-router';
 
@@ -37,6 +38,12 @@ const router = createRouter({
       name: 'frequently-asked-question',
       component: FrequentlyAskedQuestionView,
       meta: { title: getTitle('FAQ') }
+    },
+    {
+      path: '/recovery-password',
+      name: 'recovery-password',
+      component: RecoveryPasswordView,
+      meta: { title: getTitle('Recuperação de senha') }
     },
     {
       path: '/:catchAll(.*)',
