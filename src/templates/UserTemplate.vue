@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import router from '@/router';
 import { isDaytimeNow } from '@/utils/utils';
-import { computed, ref } from 'vue';
+import { ref } from 'vue';
 
 defineProps<{
   title?: string;
@@ -9,32 +9,8 @@ defineProps<{
   hint?: string;
 }>();
 
-const isOpenMenu = ref(false);
-const email = ref('');
-const password = ref('');
-const isLoading = ref(false);
 const isOpenFloatMain = ref(false);
 const isOpenFloatSupport = ref(false);
-
-const isLoginDisabled = computed(() => {
-  return email.value === '' || password.value === '' || isLoading.value;
-});
-
-function toggleMenu(): void {
-  isOpenMenu.value = !isOpenMenu.value;
-}
-
-function login(): void {
-  isLoading.value = true;
-  setTimeout(() => {
-    const error = true;
-    if (error) {
-      router.push({ path: '/', query: { error: 'true', message: 'message' } });
-      return;
-    }
-    router.push({ name: 'select-crew' });
-  }, 1000);
-}
 
 function toggleFloatMain(): void {
   isOpenFloatSupport.value = false;
@@ -45,76 +21,14 @@ function toggleFloatSupport(): void {
   isOpenFloatMain.value = false;
   isOpenFloatSupport.value = !isOpenFloatSupport.value;
 }
+
+function logout(): void {
+  router.push({ name: 'home' });
+}
 </script>
 
 <template>
   <div class="day-0" :class="{ 'night-0': !isDaytimeNow() }">
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-      <div class="navbar-brand">
-        <RouterLink to="/" class="navbar-item">Início</RouterLink>
-        <RouterLink to="/register" class="navbar-item">Cadastrar</RouterLink>
-        <a
-          role="button"
-          class="navbar-burger"
-          aria-label="menu"
-          aria-expanded="false"
-          data-target="navbarBasicExample"
-          :class="{ 'is-active': isOpenMenu }"
-          @click="toggleMenu"
-        >
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
-      </div>
-      <div id="navbarBasicExample" class="navbar-menu" :class="{ 'is-active': isOpenMenu }">
-        <div class="navbar-start"></div>
-        <div class="navbar-end">
-          <div class="navbar-item">
-            <form @submit.prevent="login" class="buttons">
-              <div>
-                <div class="field">
-                  <div class="control has-icons-left">
-                    <input
-                      class="input is-shadowless is-borderless"
-                      type="email"
-                      placeholder="E-mail"
-                      v-model.trim="email"
-                    />
-                    <span class="icon is-small is-left">
-                      <font-awesome-icon :icon="['fas', 'envelope']" />
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div class="field">
-                  <div class="control has-icons-left">
-                    <input
-                      class="input is-shadowless is-borderless"
-                      type="password"
-                      placeholder="Senha"
-                      v-model.trim="password"
-                    />
-                    <span class="icon is-small is-left">
-                      <font-awesome-icon :icon="['fas', 'lock']" />
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <button
-                class="button is-light btn-blue"
-                :class="{ 'is-loading': isLoading }"
-                :disabled="isLoginDisabled"
-              >
-                Acessar
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </nav>
     <div class="content">
       <div class="container">
         <div class="wrapper">
@@ -135,29 +49,16 @@ function toggleFloatSupport(): void {
       }"
     >
       <div class="columns is-multiline m-0">
-        <RouterLink to="/" class="is-flex is-align-items-center">
-          <div class="column"><font-awesome-icon :icon="['fas', 'home']" class="mr-2" />Início</div>
-        </RouterLink>
-        <RouterLink to="/register" class="is-flex is-align-items-center">
+        <RouterLink to="/select-crew" class="is-flex is-align-items-center">
           <div class="column">
-            <font-awesome-icon :icon="['fas', 'user-plus']" class="mr-2" />Cadastrar
+            <font-awesome-icon :icon="['fas', 'users']" class="mr-2" />Minhas Tripulações
           </div>
         </RouterLink>
-        <RouterLink to="/recovery-password" class="is-flex is-align-items-center">
+        <a class="is-flex is-align-items-center" @click="logout">
           <div class="column">
-            <font-awesome-icon :icon="['fas', 'envelope']" class="mr-2" />Recuperar Senha
+            <font-awesome-icon :icon="['fas', 'fa-right-from-bracket']" class="mr-2" />Logout
           </div>
-        </RouterLink>
-        <RouterLink to="/game-rules" class="is-flex is-align-items-center">
-          <div class="column">
-            <font-awesome-icon :icon="['fas', 'ban']" class="mr-2" />Regras e Punições
-          </div>
-        </RouterLink>
-        <RouterLink to="/privacy-policy" class="is-flex is-align-items-center">
-          <div class="column">
-            <font-awesome-icon :icon="['fas', 'list']" class="mr-2" />Política de Privacidade
-          </div>
-        </RouterLink>
+        </a>
       </div>
     </div>
     <div

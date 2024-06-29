@@ -4,6 +4,7 @@ import HomeView from '@/views/HomeView.vue';
 import PrivacyPolicyView from '@/views/PrivacyPolicyView.vue';
 import RecoveryPasswordView from '@/views/RecoveryPasswordView.vue';
 import RegisterView from '@/views/RegisterView.vue';
+import SelectCrewView from '@/views/SelectCrewView.vue';
 import { createRouter, createWebHistory } from 'vue-router';
 
 const router = createRouter({
@@ -44,6 +45,12 @@ const router = createRouter({
       name: 'recovery-password',
       component: RecoveryPasswordView,
       meta: { title: getTitle('Recuperação de senha') }
+    },
+    {
+      path: '/select-crew',
+      name: 'select-crew',
+      component: SelectCrewView,
+      meta: { title: getTitle('Selecionar Tripulação') }
     },
     {
       path: '/:catchAll(.*)',

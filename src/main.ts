@@ -10,7 +10,9 @@ import {
   faList,
   faLock,
   faQuestion,
-  faUserPlus
+  faRightFromBracket,
+  faUserPlus,
+  faUsers
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -21,7 +23,18 @@ import 'animate.css';
 import 'floating-vue/dist/style.css';
 import 'vue-search-select/dist/VueSearchSelect.css';
 
-library.add(faEnvelope, faLock, faHome, faUserPlus, faBan, faList, faCircleQuestion, faQuestion);
+library.add(
+  faEnvelope,
+  faLock,
+  faHome,
+  faUserPlus,
+  faBan,
+  faList,
+  faCircleQuestion,
+  faQuestion,
+  faUsers,
+  faRightFromBracket
+);
 
 const app = createApp(App);
 

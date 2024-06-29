@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import router from '@/router';
 import { computed, onMounted, onUnmounted, ref, watchEffect } from 'vue';
 import { useRoute } from 'vue-router';
 
@@ -41,12 +42,13 @@ function login(): void {
   errorMessage.value = '';
   isLoading.value = true;
   setTimeout(() => {
-    const error = true;
+    const error = false;
     if (error) {
       isLoading.value = false;
       errorMessage.value = 'Login e/ou senha inválidos.';
       return;
     }
+    router.push({ name: 'select-crew' });
   }, 1000);
 }
 
