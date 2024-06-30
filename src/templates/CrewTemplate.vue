@@ -1,42 +1,17 @@
 <script setup lang="ts">
 import router from '@/router';
 import { isDaytimeNow } from '@/utils/utils';
-import { computed, ref } from 'vue';
+import { ref } from 'vue';
 
 defineProps<{
   title?: string;
   icon?: string;
   hint?: string;
-  menuSelected?: 'main' | 'tutorial';
-  hideNavbar?: boolean;
+  menuSelected?: 'main' | 'sea' | 'tutorial';
 }>();
 
-const isOpenMenu = ref(false);
-const email = ref('');
-const password = ref('');
-const isLoading = ref(false);
 const isOpenFloatMain = ref(false);
 const isOpenFloatSupport = ref(false);
-
-const isLoginDisabled = computed(() => {
-  return email.value === '' || password.value === '' || isLoading.value;
-});
-
-function toggleMenu(): void {
-  isOpenMenu.value = !isOpenMenu.value;
-}
-
-function login(): void {
-  isLoading.value = true;
-  setTimeout(() => {
-    const error = true;
-    if (error) {
-      router.push({ path: '/', query: { error: 'true', message: 'message' } });
-      return;
-    }
-    router.push({ name: 'select-crew' });
-  }, 1000);
-}
 
 function toggleFloatMain(): void {
   isOpenFloatSupport.value = false;
@@ -47,76 +22,14 @@ function toggleFloatSupport(): void {
   isOpenFloatMain.value = false;
   isOpenFloatSupport.value = !isOpenFloatSupport.value;
 }
+
+function logout(): void {
+  router.push({ name: 'home' });
+}
 </script>
 
 <template>
-  <div class="day-0" :class="{ 'night-0': !isDaytimeNow() }">
-    <nav class="navbar" role="navigation" aria-label="main navigation" v-if="!hideNavbar">
-      <div class="navbar-brand">
-        <RouterLink to="/" class="navbar-item">Início</RouterLink>
-        <RouterLink to="/register" class="navbar-item">Cadastrar</RouterLink>
-        <a
-          role="button"
-          class="navbar-burger"
-          aria-label="menu"
-          aria-expanded="false"
-          data-target="navbarBasicExample"
-          :class="{ 'is-active': isOpenMenu }"
-          @click="toggleMenu"
-        >
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
-      </div>
-      <div id="navbarBasicExample" class="navbar-menu" :class="{ 'is-active': isOpenMenu }">
-        <div class="navbar-start"></div>
-        <div class="navbar-end">
-          <div class="navbar-item">
-            <form @submit.prevent="login" class="buttons">
-              <div>
-                <div class="field">
-                  <div class="control has-icons-left">
-                    <input
-                      class="input is-shadowless is-borderless"
-                      type="email"
-                      placeholder="E-mail"
-                      v-model.trim="email"
-                    />
-                    <span class="icon is-small is-left">
-                      <font-awesome-icon :icon="['fas', 'envelope']" />
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div class="field">
-                  <div class="control has-icons-left">
-                    <input
-                      class="input is-shadowless is-borderless"
-                      type="password"
-                      placeholder="Senha"
-                      v-model.trim="password"
-                    />
-                    <span class="icon is-small is-left">
-                      <font-awesome-icon :icon="['fas', 'lock']" />
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <button
-                class="button is-light btn-blue"
-                :class="{ 'is-loading': isLoading }"
-                :disabled="isLoginDisabled"
-              >
-                Acessar
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </nav>
+  <div class="day-1" :class="{ 'night-1': !isDaytimeNow() }">
     <div class="content">
       <div class="container">
         <div class="wrapper">
@@ -137,29 +50,54 @@ function toggleFloatSupport(): void {
       }"
     >
       <div class="columns is-multiline m-0">
-        <RouterLink to="/" class="is-flex is-align-items-center">
-          <div class="column"><font-awesome-icon :icon="['fas', 'home']" class="mr-2" />Início</div>
+        <RouterLink to="/newspaper" class="is-flex is-align-items-center">
+          <div class="column"><font-awesome-icon :icon="['fas', 'home']" class="mr-2" />Jornal</div>
         </RouterLink>
-        <RouterLink to="/register" class="is-flex is-align-items-center">
+        <RouterLink to="/newspaper" class="is-flex is-align-items-center">
           <div class="column">
-            <font-awesome-icon :icon="['fas', 'user-plus']" class="mr-2" />Cadastrar
+            <font-awesome-icon :icon="['fas', 'user-plus']" class="mr-2" />Recrute um Amigo
           </div>
         </RouterLink>
-        <RouterLink to="/recovery-password" class="is-flex is-align-items-center">
+        <RouterLink to="/newspaper" class="is-flex is-align-items-center">
           <div class="column">
-            <font-awesome-icon :icon="['fas', 'envelope']" class="mr-2" />Recuperar Senha
+            <font-awesome-icon :icon="['fas', 'book']" class="mr-2" />Akuma Book
           </div>
         </RouterLink>
-        <RouterLink to="/game-rules" class="is-flex is-align-items-center">
+        <RouterLink to="/newspaper" class="is-flex is-align-items-center">
           <div class="column">
-            <font-awesome-icon :icon="['fas', 'ban']" class="mr-2" />Regras e Punições
+            <font-awesome-icon :icon="['fas', 'trophy']" class="mr-2" />Hall da fama
           </div>
         </RouterLink>
-        <RouterLink to="/privacy-policy" class="is-flex is-align-items-center">
+        <RouterLink to="/newspaper" class="is-flex is-align-items-center">
           <div class="column">
-            <font-awesome-icon :icon="['fas', 'list']" class="mr-2" />Política de Privacidade
+            <font-awesome-icon :icon="['fas', 'ranking-star']" class="mr-2" />Ranking
           </div>
         </RouterLink>
+        <RouterLink to="/newspaper" class="is-flex is-align-items-center">
+          <div class="column">
+            <font-awesome-icon :icon="['fas', 'address-card']" class="mr-2" />Minha Conta
+          </div>
+        </RouterLink>
+        <RouterLink to="/newspaper" class="is-flex is-align-items-center">
+          <div class="column">
+            <font-awesome-icon :icon="['fas', 'cart-shopping']" class="mr-2" />Gold Shop
+          </div>
+        </RouterLink>
+        <RouterLink to="/newspaper" class="is-flex is-align-items-center">
+          <div class="column">
+            <font-awesome-icon :icon="['fas', 'gem']" class="mr-2" />Faça uma doação
+          </div>
+        </RouterLink>
+        <RouterLink to="/select-crew" class="is-flex is-align-items-center">
+          <div class="column">
+            <font-awesome-icon :icon="['fas', 'people-arrows']" class="mr-2" />Selecionar tripulação
+          </div>
+        </RouterLink>
+        <a class="is-flex is-align-items-center" @click="logout">
+          <div class="column">
+            <font-awesome-icon :icon="['fas', 'fa-right-from-bracket']" class="mr-2" />Logout
+          </div>
+        </a>
       </div>
     </div>
     <div
@@ -192,6 +130,17 @@ function toggleFloatSupport(): void {
       </div>
       <div
         class="is-flex is-flex-direction-column is-justify-content-center is-align-items-center"
+        @click="null"
+      >
+        <img
+          src="../assets/images/menu-footer/sea.png"
+          alt="Menu icon"
+          :class="{ 'menu-selected': menuSelected === 'sea' }"
+        />
+        <p class="menu">Ilhar Atual</p>
+      </div>
+      <div
+        class="is-flex is-flex-direction-column is-justify-content-center is-align-items-center"
         @click="toggleFloatSupport"
       >
         <img
@@ -206,16 +155,16 @@ function toggleFloatSupport(): void {
 </template>
 
 <style scoped>
-.day-0 {
-  background: url(../assets/images/layout/day/0.jpg) top center no-repeat;
+.day-1 {
+  background: url(../assets/images/layout/day/1.jpg) top center no-repeat;
   background-size: cover;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
-.night-0 {
-  background: url(../assets/images/layout/night/0.jpg) top center no-repeat;
+.night-1 {
+  background: url(../assets/images/layout/night/1.jpg) top center no-repeat;
   background-size: cover;
 }
 

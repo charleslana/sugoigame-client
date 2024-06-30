@@ -88,6 +88,8 @@ const scrollToItem = (index: number) => {
     title="FAQ"
     icon="question"
     hint="Aqui ficam registradas as respostas para algumas das perguntas mais frequentes, pode haver uma solução rápida para sua dúvida."
+    :menu-selected="'tutorial'"
+    :hide-navbar="true"
   >
     <template #wrapper>
       <div class="wrapper mb-4">

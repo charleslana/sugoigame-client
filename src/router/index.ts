@@ -1,6 +1,7 @@
 import FrequentlyAskedQuestionView from '@/views/FrequentlyAskedQuestionView.vue';
 import GameRulesView from '@/views/GameRulesView.vue';
 import HomeView from '@/views/HomeView.vue';
+import NewspaperView from '@/views/NewspaperView.vue';
 import PrivacyPolicyView from '@/views/PrivacyPolicyView.vue';
 import RecoveryPasswordView from '@/views/RecoveryPasswordView.vue';
 import RegisterView from '@/views/RegisterView.vue';
@@ -51,6 +52,12 @@ const router = createRouter({
       name: 'select-crew',
       component: SelectCrewView,
       meta: { title: getTitle('Selecionar Tripulação') }
+    },
+    {
+      path: '/newspaper',
+      name: 'newspaper',
+      component: NewspaperView,
+      meta: { title: getTitle('Notícias') }
     },
     {
       path: '/:catchAll(.*)',

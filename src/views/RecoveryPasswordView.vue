@@ -30,7 +30,7 @@ function recoveryPassword(): void {
 </script>
 
 <template>
-  <LogoutTemplate title="Recuperação de senha">
+  <LogoutTemplate title="Recuperação de senha" :menu-selected="'main'">
     <template #wrapper>
       <p class="has-text-centered">
         Informe seu email abaixo para proseguir com a recuperação da senha:

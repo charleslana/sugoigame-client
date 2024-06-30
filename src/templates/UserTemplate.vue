@@ -7,6 +7,7 @@ defineProps<{
   title?: string;
   icon?: string;
   hint?: string;
+  menuSelected?: 'main' | 'tutorial';
 }>();
 
 const isOpenFloatMain = ref(false);
@@ -82,14 +83,22 @@ function logout(): void {
         class="is-flex is-flex-direction-column is-justify-content-center is-align-items-center"
         @click="toggleFloatMain"
       >
-        <img src="../assets/images/menu-footer/main.png" alt="Menu icon" />
+        <img
+          src="../assets/images/menu-footer/main.png"
+          alt="Menu icon"
+          :class="{ 'menu-selected': menuSelected === 'main' }"
+        />
         <p class="menu">Principal</p>
       </div>
       <div
         class="is-flex is-flex-direction-column is-justify-content-center is-align-items-center"
         @click="toggleFloatSupport"
       >
-        <img src="../assets/images/menu-footer/tutorial.png" alt="Menu icon" />
+        <img
+          src="../assets/images/menu-footer/tutorial.png"
+          alt="Menu icon"
+          :class="{ 'menu-selected': menuSelected === 'tutorial' }"
+        />
         <p class="menu">Suporte & Fórum</p>
       </div>
     </div>
@@ -122,6 +131,22 @@ function logout(): void {
 .bg-footer .is-flex {
   padding: 0 1em 1em;
   cursor: pointer;
+}
+
+.bg-footer .is-flex img {
+  opacity: 0.7;
+}
+
+.bg-footer .is-flex img:hover {
+  opacity: 0.9;
+}
+
+.menu-selected {
+  opacity: 1 !important;
+}
+
+.menu-selected:hover {
+  opacity: 1 !important;
 }
 
 .bg-footer .menu {

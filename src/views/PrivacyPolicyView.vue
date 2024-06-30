@@ -3,7 +3,7 @@ import LogoutTemplate from '@/templates/LogoutTemplate.vue';
 </script>
 
 <template>
-  <LogoutTemplate title="Política de privacidade">
+  <LogoutTemplate title="Política de privacidade" :menu-selected="'main'">
     <template #wrapper>
       <p>
         Sugoi Game é um site de fãs, não tendo nenhuma relação com qualquer série ou personagem

@@ -3,16 +3,23 @@ import router from './router';
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
 import {
+  faAddressCard,
   faBan,
+  faBook,
+  faCartShopping,
   faCheck,
   faCircleQuestion,
   faEnvelope,
+  faGem,
   faHome,
   faList,
   faLock,
+  faPeopleArrows,
   faQuestion,
+  faRankingStar,
   faRightFromBracket,
   faTimes,
+  faTrophy,
   faUserPlus,
   faUsers
 } from '@fortawesome/free-solid-svg-icons';
@@ -37,7 +44,15 @@ library.add(
   faUsers,
   faRightFromBracket,
   faCheck,
-  faTimes
+  faTimes,
+  faUserPlus,
+  faBook,
+  faTrophy,
+  faRankingStar,
+  faAddressCard,
+  faCartShopping,
+  faGem,
+  faPeopleArrows
 );
 
 const app = createApp(App);

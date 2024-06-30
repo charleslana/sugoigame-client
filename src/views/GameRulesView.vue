@@ -3,7 +3,7 @@ import LogoutTemplate from '@/templates/LogoutTemplate.vue';
 </script>
 
 <template>
-  <LogoutTemplate title="Regras e Punições">
+  <LogoutTemplate title="Regras e Punições" :menu-selected="'main'">
     <template #wrapper>
       <p>
         Como em todos os lugares, o Sugoi Game tem as suas regras, é essencial que elas sejam

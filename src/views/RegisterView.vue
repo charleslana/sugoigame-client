@@ -79,7 +79,7 @@ function validatePassword(): boolean {
 </script>
 
 <template>
-  <LogoutTemplate title="Cadastro">
+  <LogoutTemplate title="Cadastro" :menu-selected="'main'">
     <template #wrapper>
       <p>Informações Pessoais:</p>
       <form class="theme-light" @submit.prevent="register">

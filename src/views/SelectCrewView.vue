@@ -6,6 +6,7 @@ import { getCharacter, getCharacterMini } from '@/utils/character-utils';
 import { computed, ref } from 'vue';
 import ModalComponent from '@/components/ModalComponent.vue';
 import { ModalSize } from '@/enum/modal-size';
+import router from '@/router';
 
 const step = ref(1);
 const faction = ref<Faction>(Faction.Marine);
@@ -97,6 +98,7 @@ function clearNameInput(): void {
 
 function selectCrew(id: number): void {
   console.log(id);
+  router.push({ name: 'newspaper' });
 }
 
 function confirmRemoveCrew(id: number): void {
@@ -128,7 +130,7 @@ function closeConfirmModal(): void {
 </script>
 
 <template>
-  <UserTemplate title="Bem vindo teste!">
+  <UserTemplate title="Bem vindo teste!" :menu-selected="'main'">
     <template #wrapper>
       <div v-if="step === 1">
         <p class="has-text-centered" v-if="false">
