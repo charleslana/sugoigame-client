@@ -175,17 +175,4 @@ function validatePassword(): boolean {
   <ModalComponent :message="message" :is-error="true" v-if="isModal" @close="isModal = false" />
 </template>
 
-<style scoped>
-.is-error:before {
-  content: '';
-  display: inline-block;
-  width: 15px;
-  height: 15px;
-  vertical-align: middle;
-  background-image: url('../assets/images/icons/close.gif');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  margin-right: 5px;
-}
-</style>
+<style scoped></style>

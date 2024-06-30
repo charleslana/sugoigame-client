@@ -4,6 +4,7 @@ import { createApp } from 'vue';
 import { createPinia } from 'pinia';
 import {
   faBan,
+  faCheck,
   faCircleQuestion,
   faEnvelope,
   faHome,
@@ -11,6 +12,7 @@ import {
   faLock,
   faQuestion,
   faRightFromBracket,
+  faTimes,
   faUserPlus,
   faUsers
 } from '@fortawesome/free-solid-svg-icons';
@@ -33,7 +35,9 @@ library.add(
   faCircleQuestion,
   faQuestion,
   faUsers,
-  faRightFromBracket
+  faRightFromBracket,
+  faCheck,
+  faTimes
 );
 
 const app = createApp(App);

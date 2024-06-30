@@ -1,7 +1,10 @@
 <script setup lang="ts">
+import { ModalSize } from '@/enum/modal-size';
+
 defineProps<{
   message: string;
   isError?: boolean;
+  size?: ModalSize;
 }>();
 
 const emit = defineEmits(['close']);
@@ -12,7 +15,7 @@ function closeModal(): void {
 </script>
 
 <template>
-  <div class="modal is-active">
+  <div :class="['modal is-active is-justify-content-start pt-5', size || ModalSize.Default]">
     <div class="modal-background"></div>
     <div class="modal-card animate__animated animate__slideInDown">
       <header class="modal-card-head" v-if="isError">
@@ -84,11 +87,12 @@ function closeModal(): void {
 }
 
 .close-modal {
-  color: white;
+  color: #c07617;
   font-size: 25px;
   font-weight: bold;
   float: right;
   opacity: 0.7;
+  text-shadow: 0 2px 0 #ffffff !important;
 }
 
 .close-modal:hover {

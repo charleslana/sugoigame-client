@@ -118,7 +118,11 @@ function checkRouteParams(): void {
       </nav>
     </div>
   </div>
-  <div class="modal" :class="{ 'is-active': isLogin }">
+  <div
+    class="modal is-justify-content-start"
+    :style="{ paddingTop: '5rem' }"
+    :class="{ 'is-active': isLogin }"
+  >
     <div class="modal-background"></div>
     <div class="modal-card animate__animated animate__slideInDown">
       <header class="modal-card-head is-justify-content-end">

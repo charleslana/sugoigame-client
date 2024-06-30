@@ -79,7 +79,7 @@
 }
 
 .btn-blue {
-  background: url(../assets/images/layout/pattern-1.png) top center no-repeat !important;
+  background: url(../assets/images/layout/pattern-1.png) top center repeat !important;
   background-color: #45859a !important;
   color: white !important;
   border: 1px solid black !important;
@@ -91,7 +91,7 @@
 }
 
 .btn-green {
-  background: url(../assets/images/layout/pattern-1.png) top center no-repeat !important;
+  background: url(../assets/images/layout/pattern-1.png) top center repeat !important;
   background-color: #488949 !important;
   color: white !important;
   border: 1px solid black !important;
@@ -103,7 +103,7 @@
 }
 
 .btn-gray {
-  background: url(../assets/images/layout/pattern-1.png) top center no-repeat !important;
+  background: url(../assets/images/layout/pattern-1.png) top center repeat !important;
   background-color: #7a8288 !important;
   color: white !important;
   border: 1px solid black !important;
@@ -112,6 +112,30 @@
 
 .btn-gray:hover {
   background-color: #62686d !important;
+}
+
+.btn-red {
+  background: url(../assets/images/layout/pattern-1.png) top center repeat !important;
+  background-color: #9f2a29 !important;
+  color: white !important;
+  border: 1px solid black !important;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+.btn-red:hover {
+  background-color: #e9322d !important;
+}
+
+.btn-default {
+  background: url(../assets/images/layout/pattern-1.png) top center repeat !important;
+  background-color: rgba(0, 0, 0, 0.6) !important;
+  color: white !important;
+  border: 1px solid black !important;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+.btn-default:hover {
+  background-color: rgba(0, 0, 0, 0.6) !important;
 }
 
 .wrapper {
@@ -173,4 +197,77 @@
 
 .v-popper--theme-tooltip .v-popper__arrow-outer {
   border-color: #c07617;
+}
+
+.is-error:before {
+  content: '';
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  vertical-align: middle;
+  background-image: url('../assets/images/icons/close.gif');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-right: 5px;
+}
+
+.is-success:before {
+  content: '';
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  vertical-align: middle;
+  background-image: url('../assets/images/icons/check.gif');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-right: 5px;
+}
+
+.custom-box {
+  background-image: url(../assets/images/layout/content-top.png),
+    url(../assets/images/layout/content-bottom.png), url(../assets/images/layout/content-center.png),
+    url(../assets/images/layout/back.jpg);
+  background-size: 100%, 100%, 100%, auto;
+  background-position:
+    center top,
+    center bottom,
+    center center,
+    center center;
+  background-repeat: no-repeat, no-repeat, repeat-y, repeat;
+  border-radius: 5px !important;
+  color: #333;
+  padding: 10px 15px;
+}
+
+.modal-sm .modal-card {
+  max-width: 300px;
+  width: 100%;
+}
+
+.modal-lg .modal-card {
+  max-width: 800px;
+  width: 100%;
+}
+
+.modal-xl .modal-card {
+  max-width: 1140px;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .modal-sm .modal-card,
+  .modal-lg .modal-card,
+  .modal-xl .modal-card {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .modal-sm .modal-card,
+  .modal-lg .modal-card,
+  .modal-xl .modal-card {
+    padding: 1rem;
+  }
 }
