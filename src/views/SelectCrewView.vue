@@ -138,7 +138,7 @@ function closeConfirmModal(): void {
         <div class="columns">
           <div class="column is-7 columns is-multiline is-mobile m-0">
             <div class="column" v-for="index in 3" :key="index">
-              <div class="custom-box has-text-centered is-170">
+              <div class="custom-box has-text-centered">
                 <img
                   src="../assets/images/flags/marine-1.jpeg"
                   alt="Flag icon"
@@ -448,10 +448,6 @@ function closeConfirmModal(): void {
 
 .is-50 {
   width: 50px !important;
-}
-
-.is-170 {
-  width: 170px !important;
 }
 
 .modal-card {
