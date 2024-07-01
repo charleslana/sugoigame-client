@@ -5,6 +5,7 @@ defineProps<{
   message: string;
   isError?: boolean;
   size?: ModalSize;
+  title?: string;
 }>();
 
 const emit = defineEmits(['close']);
@@ -22,6 +23,10 @@ function closeModal(): void {
         <p class="modal-card-title">Bancando o espertinho?</p>
         <button class="delete" aria-label="close" @click="closeModal"></button>
       </header>
+      <header class="modal-card-head title-head" v-if="title">
+        <p class="modal-card-title">{{ title }}</p>
+        <button class="delete" aria-label="close" @click="closeModal"></button>
+      </header>
       <section class="modal-card-body">
         <img src="../assets/images/layout/error.jpg" alt="Modal image" v-if="isError" />
         <button
@@ -31,7 +36,7 @@ function closeModal(): void {
           aria-hidden="true"
           style="margin-top: -10px"
           @click="closeModal"
-          v-else
+          v-if="!isError && !title"
         >
           ×
         </button>
@@ -86,16 +91,27 @@ function closeModal(): void {
   border-top: 1px solid #c07617;
 }
 
-.close-modal {
+.close-modal,
+.title-head .delete {
   color: #c07617;
   font-size: 25px;
   font-weight: bold;
   float: right;
   opacity: 0.7;
   text-shadow: 0 2px 0 #ffffff !important;
+  background: transparent;
 }
 
 .close-modal:hover {
   opacity: 1;
+}
+
+.title-head {
+  border-bottom: 3px solid #c07617 !important;
+  background: url('../assets/images/layout/back.jpg') center repeat;
+}
+
+.title-head .modal-card-title {
+  color: #222 !important;
 }
 </style>

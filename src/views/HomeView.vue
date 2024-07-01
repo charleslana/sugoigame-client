@@ -60,6 +60,12 @@ function checkRouteParams(): void {
     isLogin.value = true;
   }
 }
+
+function closeLoginModal(): void {
+  isLogin.value = false;
+  errorMessage.value = '';
+  router.replace({ query: {} });
+}
 </script>
 
 <template>
@@ -129,7 +135,7 @@ function checkRouteParams(): void {
         <div class="avatar">
           <img src="../assets/images/home/avatar.png" alt="Avatar icon" />
         </div>
-        <button class="delete" aria-label="close" @click="isLogin = false"></button>
+        <button class="delete" aria-label="close" @click="closeLoginModal"></button>
       </header>
       <section class="modal-card-body">
         <div class="content">
