@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import router from '@/router';
+import { getCharacterMini } from '@/utils/character-utils';
 import { isDaytimeNow } from '@/utils/utils';
 import { ref } from 'vue';
 
@@ -254,6 +255,18 @@ function toggleMenu(): void {
       </div>
     </div>
   </div>
+  <div class="crew-list">
+    <div class="is-flex is-flex-direction-column" v-for="index in 5" :key="index">
+      <img :src="getCharacterMini(1)" alt="Character image" class="is-clickable" />
+      <div class="is-flex crew-max-box">
+        <div class="crew-level">15</div>
+        <div class="crew-progress">
+          <progress class="progress bar-success m-0" value="100" max="100"></progress>
+          <progress class="progress" value="50" max="100"></progress>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <style scoped>
@@ -385,5 +398,49 @@ function toggleMenu(): void {
 
 .navbar {
   background: transparent;
+}
+
+.crew-list {
+  z-index: 2;
+  text-align: left;
+  position: fixed;
+  left: 1vw;
+  top: 50%;
+  transform: translateY(-50%);
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.crew-list img {
+  width: 50px;
+  height: 37px;
+}
+
+.crew-max-box {
+  width: 50px;
+}
+
+.crew-level {
+  background: #000;
+  padding: 0px 3px;
+  font-size: 2vh;
+  color: #fff;
+  margin-top: -2px;
+}
+
+.crew-progress {
+  width: 100%;
+}
+
+.progress {
+  border-radius: 0;
+  height: 1vh;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.bar-success {
+  --bulma-progress-value-background-color: #488949 !important;
 }
 </style>
