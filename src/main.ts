@@ -2,6 +2,7 @@ import App from './App.vue';
 import router from './router';
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
+import { Dropdown, Tooltip, vTooltip } from 'floating-vue';
 import {
   faAddressCard,
   faBan,
@@ -9,6 +10,7 @@ import {
   faCartShopping,
   faCheck,
   faCircleQuestion,
+  faComments,
   faEnvelope,
   faGem,
   faHome,
@@ -18,6 +20,8 @@ import {
   faQuestion,
   faRankingStar,
   faRightFromBracket,
+  faRoad,
+  faSquareH,
   faTimes,
   faTrophy,
   faUserPlus,
@@ -25,7 +29,6 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { Tooltip, vTooltip } from 'floating-vue';
 import './assets/main.css';
 import 'bulma/css/bulma.css';
 import 'animate.css';
@@ -52,7 +55,10 @@ library.add(
   faAddressCard,
   faCartShopping,
   faGem,
-  faPeopleArrows
+  faPeopleArrows,
+  faComments,
+  faRoad,
+  faSquareH
 );
 
 const app = createApp(App);
@@ -62,6 +68,7 @@ app.use(router);
 
 app.directive('tooltip', vTooltip);
 app.component('VTooltip', Tooltip);
+app.component('VDropdown', Dropdown);
 
 app.component('font-awesome-icon', FontAwesomeIcon);
 

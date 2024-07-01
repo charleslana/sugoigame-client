@@ -172,14 +172,15 @@
   text-decoration: underline !important;
 }
 
-.v-popper--theme-tooltip .v-popper__inner {
+.v-popper--theme-tooltip .v-popper__inner,
+.v-popper--theme-dropdown .v-popper__inner {
   background-image: url(../assets/images/layout/top.png), url(../assets/images/layout/bottom.png),
     url(../assets/images/layout/middle.jpg) !important;
   background-position:
     center top,
     center bottom,
-    center top;
-  background-repeat: no-repeat, no-repeat, repeat-y;
+    center top !important;
+  background-repeat: no-repeat, no-repeat, repeat-y !important;
   background-size: 100%, 100%, 100%;
   border-radius: 5px;
   border: 3px solid #c07617;
@@ -189,14 +190,15 @@
   max-width: 500px;
 }
 
-.v-popper--theme-tooltip .v-popper__arrow-inner {
+.v-popper--theme-tooltip .v-popper__arrow-inner,
+.v-popper--theme-dropdown .v-popper__arrow-inner {
   visibility: visible;
-  border-color: #c07617;
-  color: #c07617;
+  border-color: #c07617 !important;
+  color: #c07617 !important;
 }
 
 .v-popper--theme-tooltip .v-popper__arrow-outer {
-  border-color: #c07617;
+  border-color: #c07617 !important;
 }
 
 .is-error:before {

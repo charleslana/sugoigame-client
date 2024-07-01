@@ -12,24 +12,106 @@ defineProps<{
 
 const isOpenFloatMain = ref(false);
 const isOpenFloatSupport = ref(false);
+const isOpenFloatSea = ref(false);
+const isOpenMenu = ref(false);
 
 function toggleFloatMain(): void {
   isOpenFloatSupport.value = false;
+  isOpenFloatSea.value = false;
   isOpenFloatMain.value = !isOpenFloatMain.value;
 }
 
 function toggleFloatSupport(): void {
   isOpenFloatMain.value = false;
+  isOpenFloatSea.value = false;
   isOpenFloatSupport.value = !isOpenFloatSupport.value;
+}
+
+function toggleFloatSea(): void {
+  isOpenFloatMain.value = false;
+  isOpenFloatSupport.value = false;
+  isOpenFloatSea.value = !isOpenFloatSea.value;
 }
 
 function logout(): void {
   router.push({ name: 'home' });
 }
+
+function toggleMenu(): void {
+  isOpenMenu.value = !isOpenMenu.value;
+}
 </script>
 
 <template>
   <div class="day-1" :class="{ 'night-1': !isDaytimeNow() }">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <p to="/" class="navbar-item is-hidden-desktop">Menu</p>
+        <a
+          role="button"
+          class="navbar-burger"
+          aria-label="menu"
+          aria-expanded="false"
+          data-target="navbarBasicExample"
+          :class="{ 'is-active': isOpenMenu }"
+          @click="toggleMenu"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div id="navbarBasicExample" class="navbar-menu" :class="{ 'is-active': isOpenMenu }">
+        <div class="navbar-start">
+          <div class="navbar-item" v-tooltip="'Localização atual'">
+            <img src="../assets/images/icons/log-pose.png" alt="Icon image" class="mr-2" />
+            <p>0º L, 0º N , East Blue - Ilha Dawn</p>
+          </div>
+        </div>
+        <div class="navbar-end">
+          <div class="navbar-item is-clickable">
+            <VDropdown>
+              <div class="is-flex is-align-items-center">
+                <p>
+                  <small>12/06/2024 - 18:49:</small>
+                  Tripulação derrotou rouge na Grand Line
+                </p>
+                <img src="../assets/images/icons/news.png" alt="Icon image" class="ml-1" />
+              </div>
+              <template #popper>
+                <ul class="ul-list">
+                  <li v-for="index in 5" :key="index">
+                    <p>
+                      <small>12/06/2024 - 18:49:</small>
+                      Tripulação derrotou rouge na Grand Line
+                    </p>
+                  </li>
+                </ul>
+              </template>
+            </VDropdown>
+          </div>
+          <div class="navbar-item is-clickable" v-tooltip="'Mapa Mundi'">
+            <img src="../assets/images/icons/map.png" alt="Icon image" />
+          </div>
+          <div class="navbar-item is-clickable has-text-white" v-tooltip="'Chat'">
+            <font-awesome-icon :icon="['fas', 'comments']" />
+          </div>
+          <div class="navbar-item is-clickable" v-tooltip="'Mensagens'">
+            <img src="../assets/images/icons/den-den.png" alt="Icon image" />
+          </div>
+          <div class="navbar-item is-clickable" v-tooltip="'Inventário'">
+            <img src="../assets/images/icons/chest.png" alt="Icon image" />
+          </div>
+          <div class="navbar-item is-clickable" v-tooltip="'Berries'">
+            <img src="../assets/images/icons/berry.png" alt="Icon image" />
+          </div>
+          <div class="navbar-item is-clickable" v-tooltip="'Moedas de Ouro'">
+            <img src="../assets/images/icons/gold.png" alt="Icon image" />
+          </div>
+        </div>
+      </div>
+    </nav>
     <div class="content">
       <div class="container">
         <div class="wrapper">
@@ -103,6 +185,26 @@ function logout(): void {
     <div
       class="float-footer"
       :class="{
+        'custom-slide-in': isOpenFloatSea,
+        'is-hidden': !isOpenFloatSea
+      }"
+    >
+      <div class="columns is-multiline m-0">
+        <RouterLink to="/newspaper" class="is-flex is-align-items-center">
+          <div class="column">
+            <font-awesome-icon :icon="['fas', 'road']" class="mr-2" />Missões
+          </div>
+        </RouterLink>
+        <RouterLink to="/newspaper" class="is-flex is-align-items-center">
+          <div class="column">
+            <font-awesome-icon :icon="['fas', 'square-h']" class="mr-2" />Hospital
+          </div>
+        </RouterLink>
+      </div>
+    </div>
+    <div
+      class="float-footer"
+      :class="{
         'custom-slide-in': isOpenFloatSupport,
         'is-hidden': !isOpenFloatSupport
       }"
@@ -130,7 +232,7 @@ function logout(): void {
       </div>
       <div
         class="is-flex is-flex-direction-column is-justify-content-center is-align-items-center"
-        @click="null"
+        @click="toggleFloatSea"
       >
         <img
           src="../assets/images/menu-footer/sea.png"
@@ -260,5 +362,27 @@ function logout(): void {
     opacity: 1;
     transform: translateY(0) translateX(-50%);
   }
+}
+
+.navbar-item p {
+  color: #f0f0f0;
+  font-weight: bold;
+  text-shadow:
+    1px 0 #000,
+    -1px 0 #000,
+    0 1px #000,
+    0 -1px #000,
+    1px 1px #000,
+    -1px -1px #000,
+    1px -1px #000,
+    -1px 1px #000;
+}
+
+.ul-list {
+  list-style: initial;
+}
+
+.navbar {
+  background: transparent;
 }
 </style>
