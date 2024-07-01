@@ -57,7 +57,7 @@ function toggleFloatSupport(): void {
         <RouterLink to="/register" class="navbar-item">Cadastrar</RouterLink>
         <a
           role="button"
-          class="navbar-burger"
+          class="navbar-burger has-text-white"
           aria-label="menu"
           aria-expanded="false"
           data-target="navbarBasicExample"

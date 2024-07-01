@@ -49,7 +49,7 @@ function toggleMenu(): void {
         <p to="/" class="navbar-item is-hidden-desktop">Menu</p>
         <a
           role="button"
-          class="navbar-burger"
+          class="navbar-burger has-text-white"
           aria-label="menu"
           aria-expanded="false"
           data-target="navbarBasicExample"
@@ -364,7 +364,8 @@ function toggleMenu(): void {
   }
 }
 
-.navbar-item p {
+.navbar-item p,
+.is-hidden-desktop {
   color: #f0f0f0;
   font-weight: bold;
   text-shadow:
