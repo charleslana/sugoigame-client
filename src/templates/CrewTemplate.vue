@@ -267,6 +267,43 @@ function toggleMenu(): void {
       </div>
     </div>
   </div>
+  <div class="flag-pole is-clickable">
+    <img src="../assets/images/layout/flag-pole.png" alt="Pole image" class="pole" />
+    <img src="../assets/images/flags/pirate-1.jpeg" alt="Flag image" class="flag" />
+  </div>
+  <div class="quest">
+    <RouterLink to="/quest">
+      <div class="is-flex is-align-items-center">
+        <p>Objetivo:</p>
+        <img
+          src="../assets/images/icons/quest.png"
+          alt="Quest icon"
+          class="animate__animated animate__infinite animate__pulse"
+        />
+      </div>
+      <p>Complete uma missão na ilha</p>
+      <div class="is-flex is-align-items-center">
+        <img
+          src="../assets/images/icons/berry.png"
+          alt="Berry icon"
+          class="animate__animated animate__infinite animate__pulse"
+        />
+        <p>1.000</p>
+      </div>
+    </RouterLink>
+  </div>
+  <div class="menu-right">
+    <img src="../assets/images/menu-right/1.jpg" alt="Menu icon" v-tooltip="'Restaurar o navio'" />
+    <img
+      src="../assets/images/menu-right/2.jpg"
+      alt="Menu icon"
+      v-tooltip="'Disparar uma bala de canhão'"
+    />
+    <div class="text" v-tooltip="'Habilitar/Desabilitar PVP'">PVP</div>
+    <div class="text" v-tooltip="'Abrir o painel de profissões'">
+      <font-awesome-icon :icon="['fas', 'gavel']" />
+    </div>
+  </div>
 </template>
 
 <style scoped>
@@ -396,7 +433,8 @@ function toggleMenu(): void {
   list-style: initial;
 }
 
-.navbar {
+.navbar,
+.navbar-menu.is-active {
   background: transparent;
 }
 
@@ -442,5 +480,85 @@ function toggleMenu(): void {
 
 .bar-success {
   --bulma-progress-value-background-color: #488949 !important;
+}
+
+.flag-pole {
+  position: fixed;
+  z-index: 2;
+  bottom: -7px;
+  left: 0;
+}
+
+.flag-pole .pole {
+  width: 5vw;
+}
+
+.flag-pole .flag {
+  position: absolute;
+  top: 1.5vw;
+  left: 2.8vw;
+  width: 4.8vw;
+}
+
+.quest {
+  position: fixed;
+  z-index: 50;
+  right: 1vw;
+  top: 76px;
+  width: 10vw;
+  text-align: left;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  padding: 1vh;
+}
+
+.quest a {
+  color: #f0f0f0;
+  text-shadow:
+    1px 0 #000,
+    -1px 0 #000,
+    0 1px #000,
+    0 -1px #000,
+    1px 1px #000,
+    -1px -1px #000,
+    1px -1px #000,
+    -1px 1px #000;
+}
+
+.menu-right {
+  position: fixed;
+  z-index: 4;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px;
+  margin: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.menu-right img {
+  border-radius: 5px;
+  border: 2px solid #000;
+  margin: 1px auto;
+}
+
+.menu-right .text {
+  background: black;
+  width: 55px;
+  height: 40px;
+  padding: 0.5em 0;
+  color: #fff !important;
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 5px;
+  margin: 1px auto;
+  cursor: pointer;
+}
+
+.menu-right .text:hover {
+  box-shadow: 0 0 9px 3px #fff;
 }
 </style>

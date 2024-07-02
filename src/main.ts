@@ -12,6 +12,7 @@ import {
   faCircleQuestion,
   faComments,
   faEnvelope,
+  faGavel,
   faGem,
   faHome,
   faList,
@@ -58,7 +59,8 @@ library.add(
   faPeopleArrows,
   faComments,
   faRoad,
-  faSquareH
+  faSquareH,
+  faGavel
 );
 
 const app = createApp(App);

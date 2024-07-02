@@ -273,3 +273,7 @@
     padding: 1rem;
   }
 }
+
+.no-clickable {
+  pointer-events: none;
+}

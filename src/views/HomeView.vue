@@ -185,7 +185,12 @@ function closeLoginModal(): void {
         </div>
       </section>
       <footer class="modal-card-foot is-justify-content-center">
-        <RouterLink to="/register" class="is-size-4 is-uppercase">Cadastre-se agora!</RouterLink>
+        <RouterLink
+          to="/register"
+          class="is-size-4 is-uppercase"
+          :class="{ 'no-clickable': isLoading }"
+          >Cadastre-se agora!</RouterLink
+        >
       </footer>
     </div>
   </div>
