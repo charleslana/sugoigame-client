@@ -256,8 +256,8 @@ function toggleMenu(): void {
     </div>
   </div>
   <div class="crew-list">
-    <div class="is-flex is-flex-direction-column" v-for="index in 5" :key="index">
-      <img :src="getCharacterMini(1)" alt="Character image" class="is-clickable" />
+    <div class="is-flex is-flex-direction-column is-clickable" v-for="index in 5" :key="index">
+      <img :src="getCharacterMini(1)" alt="Character image" />
       <div class="is-flex crew-max-box">
         <div class="crew-level">15</div>
         <div class="crew-progress">
